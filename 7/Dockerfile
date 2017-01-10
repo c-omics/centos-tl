@@ -9,6 +9,7 @@ MAINTAINER Ian Merrick <MerrickI@Cardiff.ac.uk>
 ##############################################################
 ENV PATH="/usr/local/bin:$PATH"
 RUN yum install -y epel-release ; \
+    yum update -y ; \
     yum install -y ansible \
                    bind-utils \
                    bzip2 \
@@ -27,7 +28,7 @@ RUN yum install -y epel-release ; \
                    which \
                    wget ; \
     yum -y group install "Development Tools" ; \
-    yum update  -y ; \
+    yum clean all ; \
     wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz ; \
     tar xvzf install-tl-unx.tar.gz 
 COPY tl-profile.txt /tl-profile.txt
